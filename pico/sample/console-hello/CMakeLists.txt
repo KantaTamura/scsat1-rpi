@@ -8,6 +8,10 @@ if (USE_UART1)
     list(APPEND EXTRA_DTC_OVERLAY_FILE "uart1.overlay")
 endif()
 
+if (ALLOW_DEBUG)
+    list(APPEND EXTRA_CONF_FILE "debug.conf")
+endif()
+
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(console-hello)
 

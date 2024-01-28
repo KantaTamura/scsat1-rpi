@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: Apache-2.0
+
+mainmenu "pico-sample: console-hello"
+
+source "Kconfig.zephyr"
+
+module = MAIN
+source "subsys/logging/Kconfig.template.log_config" # for logging

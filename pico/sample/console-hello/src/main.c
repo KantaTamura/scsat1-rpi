@@ -8,6 +8,9 @@
 #include <zephyr/drivers/uart.h>
 #include <zephyr/kernel.h>
 
+#include <zephyr/logging/log.h>
+LOG_MODULE_REGISTER(main, CONFIG_MAIN_LOG_LEVEL);
+
 #define CONSOLE_DEVICE DEVICE_DT_GET(DT_CHOSEN(zephyr_console))
 
 int main(void)
@@ -23,12 +26,16 @@ int main(void)
              * ref.
              *   https://docs.zephyrproject.org/latest/hardware/peripherals/uart.html#c.uart_line_ctrl_get
              */
+            LOG_ERR("Failed to get DTR");
             break;
         }
         k_sleep(K_MSEC(100));
     }
 
+    LOG_INF("application started.");
+
     while (1) {
+        LOG_INF("Log Hello!");
         printk("Hello World!\n");
         k_sleep(K_MSEC(1000));
     }
