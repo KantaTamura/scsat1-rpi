@@ -10,3 +10,8 @@ manifest:
         name-allowlist:
           - cmsis
           - hal_rpi_pico
+
+    - name: libcsp
+      url: https://github.com/KantaTamura/libcsp.git
+      revision: wip/zephyr-usart
+      path: modules/lib/libcsp
