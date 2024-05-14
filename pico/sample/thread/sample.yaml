@@ -1,0 +1,10 @@
+sample:
+  name: zephyr thread sample
+tests:
+  sample.thread:
+    build_only: true
+    platform_allow:
+      - rpi_pico
+    tags:
+      - uart
+      - usb_device
