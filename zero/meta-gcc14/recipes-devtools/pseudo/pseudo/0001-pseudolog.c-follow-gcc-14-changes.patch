@@ -1,0 +1,31 @@
+From a07bbd39766d1144dd52c19d7048c19f0167cf2a Mon Sep 17 00:00:00 2001
+From: KantaTamura <tkanta496@gmail.com>
+Date: Fri, 18 Oct 2024 22:18:07 +0900
+Subject: [PATCH] pseudolog.c: follow gcc-14 changes
+
+Signed-off-by: KantaTamura <tkanta496@gmail.com>
+---
+ pseudolog.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/pseudolog.c b/pseudolog.c
+index 3ec4b77..ad04753 100644
+--- a/pseudolog.c
++++ b/pseudolog.c
+@@ -9,6 +9,7 @@
+ /* We need _XOPEN_SOURCE for strptime(), but if we define that,
+  * we then don't get S_IFSOCK... _GNU_SOURCE turns on everything. */
+ #define _DEFAULT_SOURCE
++#define _XOPEN_SOURCE
+ 
+ #include <ctype.h>
+ #include <limits.h>
+@@ -374,7 +375,7 @@ plog_trait(int opt, char *string) {
+ 		pseudo_diag("invalid empty string for -%c\n", opt);
+ 		return 0;
+ 	}
+-	new_trait = calloc(sizeof(*new_trait), 1);
++	new_trait = calloc(1, sizeof(*new_trait));
+ 	if (!new_trait) {
+ 		pseudo_diag("Couldn't allocate requested trait (for -%c %s)\n",
+ 			opt, string ? string : "<nil>");
